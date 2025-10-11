@@ -5,46 +5,234 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Telegram Mini App — User ID</title>
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        html, body { height: 100%; }
-        body {
-            margin: 0;
-            font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, 'Helvetica Neue', Arial, sans-serif;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            background: var(--tg-theme-bg-color, #ffffff);
-            color: var(--tg-theme-text-color, #111111);
-        }
-        #line { font-size: 18px; white-space: nowrap; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="line">Завантаження…</div>
-
-<script>
+<script defer>
     (function () {
         const el = document.getElementById('line');
         const tg = window.Telegram && window.Telegram.WebApp;
-
-        if (!tg) {
-            el.textContent = 'Відкрийте цю сторінку всередині Telegram';
-            return;
-        }
-
-        // Готуємо Mini App (настроює тему, повідомляє Telegram, що все ок)
         tg.ready();
-
-        // Спроба взяти id з авторизованого контексту Mini App
         const userId = tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.id;
+        console.log(userId);
 
-        if (userId) {
-            el.textContent = `Ваш Telegram ID: ${userId}`; // одна строка на екрані
-        } else {
-            // Якщо користувача немає у контексті (наприклад, відкрито поза Telegram)
-            el.textContent = 'Авторизацію не отримано';
-        }
+        // if (userId) {
+        //     el.textContent = `Ваш Telegram ID: ${userId}`; // одна строка на екрані
+        // } else {
+        //     // Якщо користувача немає у контексті (наприклад, відкрито поза Telegram)
+        //     el.textContent = 'Авторизацію не отримано';
+        // }
     })();
 </script>
+
+<script>
+    var data = [
+        {
+            "idx": 0,
+            "id": 6999,
+            "fulltext": "Неділя, 12-го жовтня, 200 грн, буена-віста",
+            "source_slug": "Social Dance Community Kyiv:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x37373232373831343532373534333932383535",
+            "possibility": 85,
+            "brief": "Неділя, 12 жовтня, відбудеться офлайн-подія у Буена-Віста. Вартість участі становить 200 грн.",
+            "event_date": "2025-10-12",
+            "created_at": "2025-10-11 12:46:57.376898+00"
+        },
+        {
+            "idx": 1,
+            "id": 6794,
+            "fulltext": "ЦІЄЇ СУБОТИ ТУСИМО та ТАНЦЮЄМО!. Вечірка: танці, коктейлі та кава - на ваш смак). Формат вашого улюбленого денс-кафе: ТАНЦІ (сальса, бачата, кізомба і зук 40/40/20) спілкування, відпочинок, та найкраща компанія для суботнього вечора! . Приємна атмосфера та зручна локція в центрі: SalsaBO студія, місце, де можна зібратися з танцюючими друзями, або прийти з тим, кому ви б хотіли показати, як ви танцюєте, випити бокальчик кави або коктейль,та побазікати про різне))) . В ЦЮ СУББОТУ запрошуємо танцювати та тусоватися в Dance Cafe!. Що: SalsaBO Dance Cafe - SALSA, BACHATA, KIZOMBA/ZOUK  PARTY. Коли: 11 ЖОВТНЯ. Час: 19:00-21:30. Вартість: 200 грн з дійсним абонементом SalsaBO, або якщо немає абонементу - 250 грн та цукерка нам 😂. Локація: вул. Велика ЖИТОМИРСЬКА 24Б. . До зустрічі в SalsaBO! . #salsaparty #bachataparty #сальсапаті #бачатапаті",
+            "source_slug": "SalsaBO ХимЧистка:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x31333130303934363937313930383536343434",
+            "possibility": 98,
+            "brief": "11 жовтня у SalsaBO студії (вул. Велика Житомирська, 24Б) відбудеться вечірка з танцями сальса, бачата, кізомба та зук у форматі 40/40/20. Подія триватиме з 19:00 до 21:30, 250 грн",
+            "event_date": "2025-10-11",
+            "created_at": "2025-10-09 16:10:42.876857+00"
+        },
+        {
+            "idx": 2,
+            "id": 6776,
+            "fulltext": "🔥 Space Bachata: Neon Night 🔥. . Costa Rica Dance & Alma Bachata. . 🔔 Неділя, 12.10. ⏰ 18:40 – 22:15. 📍 вул. Братська, 6 (Just In Space). 🚇 м. Поштова площа — 5 хвилин. 💵 Вхід: 150 грн. 💡 Дрес-код: NEON — яскраво, сміливо, помітно!. . 🎉 Цієї неділі ми зануримось у світ музики, світла й енергії — Space Bachata: Neon Night!. 💃 Майстер-клас від Artur y Vira — тема Bachataflow. . Після класу — вечірка до 22:15, де під неоновими вогнями оживе все: танці, усмішки та магія бачати 💛. . 📅 Програма:. 👉 18:45 – 19:20 — MK  (Artur y Vira) середній рівень. 👉 19:20 – 22:15 — Latin Party 🎉. 🎼 Bachata 4 / Salsa 1. 🎧 DJ Costa Rica. . ✨ Вдягай неон, заряджайся світлом і танцюй, як ніхто не бачить!. Це буде ніч, де сяє кожен 💫",
+            "source_slug": "Social Dance Community Kyiv:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x2d34303130373836383336343939343037333730",
+            "possibility": 98,
+            "brief": "12 жовтня у Just In Space на вул. Братській, 6 відбудеться захід Space Bachata, вечірка з латинською музикою до 22:15, 150 грн.",
+            "event_date": "2025-10-12",
+            "created_at": "2025-10-09 16:09:15.22936+00"
+        },
+        {
+            "idx": 3,
+            "id": 6761,
+            "fulltext": "Наші друзі запрошують на свою вечірку в цю суботу 🥳 . . 🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸🔸. . 🌟 Black and Gold - A Bachata and Chill event 💫. . Вже 11 жовтня (субота) відбудеться наша друга вечірка, цього разу - в атмосферному лаунжі від GNRTR ❤️‍🔥. . Що буде: . - вайбова фотогенічна локація. - найкраща музика (до речі, ви зможете знову взяти участь у формуванні плей-листу 🙌). - стильні лідери та фоловери (дивіться дрес-код 👀). - Special Guests. - бар. - кулер з водою (так-так, дбаємо про ваш комфорт у дрібничках 🤗). - розіграш та приємні призи 🎁 . . Чекаємо на вас!. . 📍GNRTR, вул. Михайла Грушевського, 3. 🕕 Час: 18:00 – 22:00. 💃 Only bachata - найкраща музика і атмосфера!. 👔 Дрес-код: Чорне і Золото. . 🎟 Вхід:. ✔️ 300 грн до 10/10 (включно). ✔️ 400 грн 11/10 на вході і онлайн. . 🎧: DJ MIKE & DJ MORGAN . . 📌 Оплата та питання: @taoshka . . Time to make some beautiful memories ✨",
+            "source_slug": "Lago Family NEWS:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x35343132373034373738313438373130333138",
+            "possibility": 98,
+            "brief": "11 жовтня о 18:00 у лаунжі GNRTR (вул. Михайла Грушевського, 3) бачата вечірка Black and Gold –  тематичний дрес-код (чорне і золото), Вартість - 400 грн, з 18:00 до 22:00.",
+            "event_date": "2025-10-11",
+            "created_at": "2025-10-09 16:07:04.476616+00"
+        },
+        {
+            "idx": 4,
+            "id": 6751,
+            "fulltext": "HOME PARTY AT CASA. Щосуботи 18:00-21:00. . Для всіх охочих весело провести час!. . Тут ти можеш розслабитись та відпочити. Знайти нових друзів та тепло поспілкуватись. Послухати гарну музику та потанцювати. Познайомитись з латиноамериканськими танцями . Розважитися анімаціями та поринути в крутезний вайб. . Плануй дати:. 04.10 11.10 18.10 25.10. . ВХІД 50 ГPH. . Адреса: . Ⓜ️ОЛІМПІЙСЬКА (4 хв).  вул. Жилянська 5-Б",
+            "source_slug": "танці: Київ, Вінниця, Хмельницький. Культура, Освіта:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x2d36323238323831363932303635383737333937",
+            "possibility": 98,
+            "brief": "Щосуботи з 18:00 до 21:00 у Casa проходить HOME PARTY AT CASA за адресою вул. Жилянська 5-Б, поруч зі станцією метро Олімпійська. Вхід коштує 50 грн. ",
+            "event_date": "2025-10-11",
+            "created_at": "2025-10-09 16:06:21.776663+00"
+        },
+        {
+            "idx": 5,
+            "id": 6653,
+            "fulltext": "🪩 VIP PARTY 🪩. ⠀. Спеціальний едішн для найкращих танцівників 🍒. ⠀. Нова локація - це завжди цікаво! А якщо ще й із видом на Майдан Незалежності 😍. Зручно дістатися - 5 хв від Ⓜ️ Хрещатик або Ⓜ️ Майдан Незалежності.. І все це в поєднанні з організацією Social Prime - тобто івент, який НЕМОЖЛИВО пропустити 🍉. ⠀. 🎤 MC Raul. 🎧 DJ Said. 🔥 4/1 Bachata/Salsa. ⠀. 📅 11 жовтня (субота) | 18:00-22:00. 📍 Готель “Україна”, Алея Героїв Небесної Сотні, 4. 💸 300 грн. ⠀. Приходь за атмосферою, драйвом і відчуттям, що цей вечір створений саме для тебе ❤️",
+            "source_slug": "Social Prime:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x33303930353135313730393331373239373534",
+            "possibility": 98,
+            "brief": "11 жовтня у готелі “Україна” відбудеться PARTY з 18:00 до 22:00 на Алеї Героїв Небесної Сотні, 4, bachata/salsa, вартість участі 300 грн.",
+            "event_date": "2025-10-11",
+            "created_at": "2025-10-07 05:17:05.880908+00"
+        },
+        {
+            "idx": 6,
+            "id": 6054,
+            "fulltext": "Друзі! . Ми знаємо ви чекали цього! . Kyiv Kiz Alliance Party 3 Autumn Edition!. 1️⃣2️⃣ жовтня 2️⃣0️⃣2️⃣5️⃣ року😍. В Нивки Холл🤩. . Kyiv Kiz Alliance Party - це вже не просто велика вечірка😊. Це місце де ми збираємось разом раз на сезон, для того щоб потанцювати, поспілкуватись, а одна з найважливіших місій - зібрати кошти на допомогу нашим військовим танцівникам🫡. . 6 студій Києва, в кожній з яких викладають на регулярній основі Kiz напрямки танців, вже втретє обʼєднуються щоб створити для вас незабутній танцювальний захід💃🕺. Ravado Studio, Soulkizz, IonA Dance, Bailando, Urbanika, Urban Chill, всі ми зібрались разом, аби творити танцювальну історію Києва протягом 7 годин🥰. А за пультом київські маестро діджеїнгу будуть створювати незабутню атмосферу: . . Dj Yummy. Dj Lola. Dj Alex . Dj Teo . Dj Crush . Dj Clementine . Dj La Kosta . . ‼️Важливо‼️. 50% прибутку з вечірки підуть на ЗСУ! . . Отож: . 📆Коли? - 12 жовтня. ⏰Час? - 15:00-22:00 . 🏠 Місце? - Нівки Холл . 💶Вартість? . 300 грн. до 5 жовтня включно. . 350 до 10 жовтня включно. . 400 на вході. . . Оплату можна здійснювати будь-кому з викладацького складу шкіл організаторів. Якщо таких не знаєте, то на вході в день івенту😉. . За подробицями звертайтесь до:. Крістіни Ярощук, Анастасії Степанової, Анни Кайданової, Ігоря Кудрика, Вікторії Кулакової, Андрія Дуброва.",
+            "source_slug": "KIZOMBA social room:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x2d33333635343235323234343135373236313332",
+            "possibility": 99,
+            "brief": "Kyiv Kiz Alliance Party 3 Autumn Edition відбудеться 12 жовтня 2025 року в Нивки Холл з 15:00 до 22:00. Вартість квитків - 400 грн на вході.",
+            "event_date": "2025-10-12",
+            "created_at": "2025-10-02 06:05:13.048638+00"
+        }
+    ]
+</script>
+
+<div id="app"></div>
+<script>
+
+    const votes = new Map(); // id -> array of voters (приклад)
+    const state = { expandedId: null };
+
+    const fDate = iso => new Intl.DateTimeFormat('uk-UA',{ day:'numeric', month:'long'}).format(new Date(iso));
+
+    const app = document.getElementById('app');
+    app.style.cssText = `
+  font: 14px system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif;
+  color:#111;background:#fff;
+`;
+    const css = document.createElement('style');
+    css.textContent = `
+.list { display:flex; flex-direction:column; gap:8px; padding:12px; }
+.item { border:1px solid #e5e5e5; border-radius:12px; padding:10px 12px; background:#fafafa; }
+.row { display:flex; justify-content:space-between; gap:12px; align-items:center; cursor:pointer; }
+.left { display:flex; flex-direction:column; gap:4px; }
+.date { font-weight:600; }
+.brief { color:#333; }
+.actions { display:flex; align-items:center; gap:10px; }
+.btn { border:none; background:transparent; font-size:20px; line-height:1; cursor:pointer; }
+.full { margin-top:8px; padding-top:8px; border-top:1px dashed #ddd; color:#222; }
+.voters { font-size:12px; color:#555; }
+`;
+    document.head.append(css);
+
+    function render() {
+        app.innerHTML = '';
+        const list = document.createElement('div');
+        list.className = 'list';
+
+        for (const it of data) {
+            const item = document.createElement('div');
+            item.className = 'item';
+
+            const row = document.createElement('div');
+            row.className = 'row';
+
+            const left = document.createElement('div');
+            left.className = 'left';
+
+            const d = document.createElement('div');
+            d.className = 'date';
+            d.textContent = fDate(it.event_date); // "9 жовтня"
+
+            const b = document.createElement('div');
+            b.className = 'brief';
+            b.textContent = it.brief;
+
+            left.append(d, b);
+
+            const actions = document.createElement('div');
+            actions.className = 'actions';
+
+            const btn = document.createElement('button');
+            btn.className = 'btn';
+            btn.textContent = '👍'; // емодзі-кнопка голосу
+
+            const voters = votes.get(it.id) ?? [];
+            const votersEl = document.createElement('div');
+            votersEl.className = 'voters';
+            votersEl.textContent = voters.length ? `Голоси: ${voters.join(', ')}` : 'Голосів поки нема';
+
+            actions.append(btn);
+            row.append(left, actions);
+
+            // Клік по рядку — розгорнути/згорнути (один за раз)
+            row.addEventListener('click', (e) => {
+                // не реагуємо, якщо клік по кнопці
+                if (e.target === btn) return;
+                state.expandedId = (state.expandedId === it.id) ? null : it.id;
+                render();
+            });
+
+            // Клік по голосуванню
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                // приклад: додаємо локального "user123"; у реалі — Telegram.WebApp.initDataUnsafe.user.username/id
+                const me = 'user123';
+                const arr = votes.get(it.id) ?? [];
+                if (!arr.includes(me)) arr.push(me);
+                votes.set(it.id, arr);
+                render();
+            });
+
+            item.append(row, votersEl);
+
+            // Показуємо fulltext лише якщо цей item активний
+            if (state.expandedId === it.id) {
+                const full = document.createElement('div');
+                full.className = 'full';
+                full.textContent = it.fulltext;
+                item.append(full);
+            }
+
+            list.append(item);
+        }
+
+        app.append(list);
+    }
+
+    render();
+</script>
+
 </body>
 </html>
