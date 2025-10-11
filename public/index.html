@@ -3,48 +3,38 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Telegram Mini App — User ID</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <link rel="stylesheet" href="style.css">
+    <title>Події — мінімальний список</title>
+    <style>
+        :root { --bg:#fff; --fg:#111; --muted:#666; --card:#fafafa; --border:#e5e5e5; }
+        html,body { height:100% }
+        body { margin:0; background:var(--bg); color:var(--fg);
+            font:14px system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Cantarell,Arial,sans-serif; }
+        #app { min-height:100% }
+        .header { padding:10px 12px; font-weight:600; position:sticky; top:0;
+            background:var(--bg); border-bottom:1px solid var(--border); z-index:1; }
+        .wrap { padding:12px; display:flex; flex-direction:column; gap:12px; }
+        .item { border:1px solid var(--border); border-radius:12px; background:var(--card); }
+        .row { display:flex; justify-content:space-between; align-items:center; gap:12px;
+            padding:10px 12px; cursor:pointer; }
+        .left { display:flex; flex-direction:column; gap:4px; min-width:0; }
+        .date { font-weight:600; }
+        .brief { color:#222; overflow:hidden; text-overflow:ellipsis;
+            display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; }
+        .full { padding:8px 12px 12px; border-top:1px dashed var(--border); white-space:pre-wrap; }
+    </style>
 </head>
 <body>
-<script defer>
-    (function () {
-        const el = document.getElementById('line');
-        const tg = window.Telegram && window.Telegram.WebApp;
-        tg.ready();
-        const userId = tg.initDataUnsafe && tg.initDataUnsafe.user && tg.initDataUnsafe.user.id;
-        console.log(userId);
+<div id="app"></div>
 
-        // if (userId) {
-        //     el.textContent = `Ваш Telegram ID: ${userId}`; // одна строка на екрані
-        // } else {
-        //     // Якщо користувача немає у контексті (наприклад, відкрито поза Telegram)
-        //     el.textContent = 'Авторизацію не отримано';
-        // }
-    })();
-</script>
-
-<script>
-    var data = [
-        {
-            "idx": 0,
-            "id": 6999,
-            "fulltext": "Неділя, 12-го жовтня, 200 грн, буена-віста",
-            "source_slug": "Social Dance Community Kyiv:telega",
-            "category": "dance",
-            "city": "Київ",
-            "status": "readytopost",
-            "hash": "\\x37373232373831343532373534333932383535",
-            "possibility": 85,
-            "brief": "Неділя, 12 жовтня, відбудеться офлайн-подія у Буена-Віста. Вартість участі становить 200 грн.",
-            "event_date": "2025-10-12",
-            "created_at": "2025-10-11 12:46:57.376898+00"
-        },
+<script type="module">
+    // -------------------------
+    // 1) Статичні дані (захардкоджено)
+    // -------------------------
+    const events = [
         {
             "idx": 1,
             "id": 6794,
-            "fulltext": "ЦІЄЇ СУБОТИ ТУСИМО та ТАНЦЮЄМО!. Вечірка: танці, коктейлі та кава - на ваш смак). Формат вашого улюбленого денс-кафе: ТАНЦІ (сальса, бачата, кізомба і зук 40/40/20) спілкування, відпочинок, та найкраща компанія для суботнього вечора! . Приємна атмосфера та зручна локція в центрі: SalsaBO студія, місце, де можна зібратися з танцюючими друзями, або прийти з тим, кому ви б хотіли показати, як ви танцюєте, випити бокальчик кави або коктейль,та побазікати про різне))) . В ЦЮ СУББОТУ запрошуємо танцювати та тусоватися в Dance Cafe!. Що: SalsaBO Dance Cafe - SALSA, BACHATA, KIZOMBA/ZOUK  PARTY. Коли: 11 ЖОВТНЯ. Час: 19:00-21:30. Вартість: 200 грн з дійсним абонементом SalsaBO, або якщо немає абонементу - 250 грн та цукерка нам 😂. Локація: вул. Велика ЖИТОМИРСЬКА 24Б. . До зустрічі в SalsaBO! . #salsaparty #bachataparty #сальсапаті #бачатапаті",
+            "fulltext": "ЦІЄ Ї СУБОТИ ТУСИМО та ТАНЦЮЄМО!. Вечірка: танці, коктейлі та кава - на ваш смак). Формат вашого улюбленого денс-кафе: ТАНЦІ (сальса, бачата, кізомба і зук 40/40/20) спілкування, відпочинок, та найкраща компанія для суботнього вечора! . Приємна атмосфера та зручна локція в центрі: SalsaBO студія, місце, де можна зібратися з танцюючими друзями, або прийти з тим, кому ви б хотіли показати, як ви танцюєте, випити бокальчик кави або коктейль,та побазікати про різне))) . В ЦЮ СУББОТУ запрошуємо танцювати та тусоватися в Dance Cafe!. Що: SalsaBO Dance Cafe - SALSA, BACHATA, KIZOMBA/ZOUK  PARTY. Коли: 11 ЖОВТНЯ. Час: 19:00-21:30. Вартість: 200 грн з дійсним абонементом SalsaBO, або якщо немає абонементу - 250 грн та цукерка нам 😂. Локація: вул. Велика ЖИТОМИРСЬКА 24Б. . До зустрічі в SalsaBO! . #salsaparty #bachataparty #сальсапаті #бачатапаті",
             "source_slug": "SalsaBO ХимЧистка:telega",
             "category": "dance",
             "city": "Київ",
@@ -54,20 +44,6 @@
             "brief": "11 жовтня у SalsaBO студії (вул. Велика Житомирська, 24Б) відбудеться вечірка з танцями сальса, бачата, кізомба та зук у форматі 40/40/20. Подія триватиме з 19:00 до 21:30, 250 грн",
             "event_date": "2025-10-11",
             "created_at": "2025-10-09 16:10:42.876857+00"
-        },
-        {
-            "idx": 2,
-            "id": 6776,
-            "fulltext": "🔥 Space Bachata: Neon Night 🔥. . Costa Rica Dance & Alma Bachata. . 🔔 Неділя, 12.10. ⏰ 18:40 – 22:15. 📍 вул. Братська, 6 (Just In Space). 🚇 м. Поштова площа — 5 хвилин. 💵 Вхід: 150 грн. 💡 Дрес-код: NEON — яскраво, сміливо, помітно!. . 🎉 Цієї неділі ми зануримось у світ музики, світла й енергії — Space Bachata: Neon Night!. 💃 Майстер-клас від Artur y Vira — тема Bachataflow. . Після класу — вечірка до 22:15, де під неоновими вогнями оживе все: танці, усмішки та магія бачати 💛. . 📅 Програма:. 👉 18:45 – 19:20 — MK  (Artur y Vira) середній рівень. 👉 19:20 – 22:15 — Latin Party 🎉. 🎼 Bachata 4 / Salsa 1. 🎧 DJ Costa Rica. . ✨ Вдягай неон, заряджайся світлом і танцюй, як ніхто не бачить!. Це буде ніч, де сяє кожен 💫",
-            "source_slug": "Social Dance Community Kyiv:telega",
-            "category": "dance",
-            "city": "Київ",
-            "status": "readytopost",
-            "hash": "\\x2d34303130373836383336343939343037333730",
-            "possibility": 98,
-            "brief": "12 жовтня у Just In Space на вул. Братській, 6 відбудеться захід Space Bachata, вечірка з латинською музикою до 22:15, 150 грн.",
-            "event_date": "2025-10-12",
-            "created_at": "2025-10-09 16:09:15.22936+00"
         },
         {
             "idx": 3,
@@ -112,6 +88,34 @@
             "created_at": "2025-10-07 05:17:05.880908+00"
         },
         {
+            "idx": 0,
+            "id": 6999,
+            "fulltext": "Неділя, 12-го жовтня, 200 грн, буена-віста",
+            "source_slug": "Social Dance Community Kyiv:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x37373232373831343532373534333932383535",
+            "possibility": 85,
+            "brief": "Неділя, 12 жовтня, відбудеться офлайн-подія у Буена-Віста. Вартість участі становить 200 грн.",
+            "event_date": "2025-10-12",
+            "created_at": "2025-10-11 12:46:57.376898+00"
+        },
+        {
+            "idx": 2,
+            "id": 6776,
+            "fulltext": "🔥 Space Bachata: Neon Night 🔥. . Costa Rica Dance & Alma Bachata. . 🔔 Неділя, 12.10. ⏰ 18:40 – 22:15. 📍 вул. Братська, 6 (Just In Space). 🚇 м. Поштова площа — 5 хвилин. 💵 Вхід: 150 грн. 💡 Дрес-код: NEON — яскраво, сміливо, помітно!. . 🎉 Цієї неділі ми зануримось у світ музики, світла й енергії — Space Bachata: Neon Night!. 💃 Майстер-клас від Artur y Vira — тема Bachataflow. . Після класу — вечірка до 22:15, де під неоновими вогнями оживе все: танці, усмішки та магія бачати 💛. . 📅 Програма:. 👉 18:45 – 19:20 — MK  (Artur y Vira) середній рівень. 👉 19:20 – 22:15 — Latin Party 🎉. 🎼 Bachata 4 / Salsa 1. 🎧 DJ Costa Rica. . ✨ Вдягай неон, заряджайся світлом і танцюй, як ніхто не бачить!. Це буде ніч, де сяє кожен 💫",
+            "source_slug": "Social Dance Community Kyiv:telega",
+            "category": "dance",
+            "city": "Київ",
+            "status": "readytopost",
+            "hash": "\\x2d34303130373836383336343939343037333730",
+            "possibility": 98,
+            "brief": "12 жовтня у Just In Space на вул. Братській, 6 відбудеться захід Space Bachata, вечірка з латинською музикою до 22:15, 150 грн.",
+            "event_date": "2025-10-12",
+            "created_at": "2025-10-09 16:09:15.22936+00"
+        },
+        {
             "idx": 6,
             "id": 6054,
             "fulltext": "Друзі! . Ми знаємо ви чекали цього! . Kyiv Kiz Alliance Party 3 Autumn Edition!. 1️⃣2️⃣ жовтня 2️⃣0️⃣2️⃣5️⃣ року😍. В Нивки Холл🤩. . Kyiv Kiz Alliance Party - це вже не просто велика вечірка😊. Це місце де ми збираємось разом раз на сезон, для того щоб потанцювати, поспілкуватись, а одна з найважливіших місій - зібрати кошти на допомогу нашим військовим танцівникам🫡. . 6 студій Києва, в кожній з яких викладають на регулярній основі Kiz напрямки танців, вже втретє обʼєднуються щоб створити для вас незабутній танцювальний захід💃🕺. Ravado Studio, Soulkizz, IonA Dance, Bailando, Urbanika, Urban Chill, всі ми зібрались разом, аби творити танцювальну історію Києва протягом 7 годин🥰. А за пультом київські маестро діджеїнгу будуть створювати незабутню атмосферу: . . Dj Yummy. Dj Lola. Dj Alex . Dj Teo . Dj Crush . Dj Clementine . Dj La Kosta . . ‼️Важливо‼️. 50% прибутку з вечірки підуть на ЗСУ! . . Отож: . 📆Коли? - 12 жовтня. ⏰Час? - 15:00-22:00 . 🏠 Місце? - Нівки Холл . 💶Вартість? . 300 грн. до 5 жовтня включно. . 350 до 10 жовтня включно. . 400 на вході. . . Оплату можна здійснювати будь-кому з викладацького складу шкіл організаторів. Якщо таких не знаєте, то на вході в день івенту😉. . За подробицями звертайтесь до:. Крістіни Ярощук, Анастасії Степанової, Анни Кайданової, Ігоря Кудрика, Вікторії Кулакової, Андрія Дуброва.",
@@ -126,113 +130,90 @@
             "created_at": "2025-10-02 06:05:13.048638+00"
         }
     ]
-</script>
 
-<div id="app"></div>
-<script>
+    // -------------------------
+    // 2) Утиліти
+    // -------------------------
+    const formatDateUA = iso =>
+        new Intl.DateTimeFormat('uk-UA',{ day:'numeric', month:'long' })
+            .format(new Date(iso));
 
-    const votes = new Map(); // id -> array of voters (приклад)
-    const state = { expandedId: null };
+    function el(tag, attrs = {}, children = []) {
+        const node = document.createElement(tag);
+        for (const [k, v] of Object.entries(attrs)) {
+            if (k === 'className') node.className = v;
+            else if (k.startsWith('on') && typeof v === 'function')
+                node.addEventListener(k.slice(2).toLowerCase(), v);
+            else node.setAttribute(k, v);
+        }
+        for (const c of children) node.append(c);
+        return node;
+    }
 
-    const fDate = iso => new Intl.DateTimeFormat('uk-UA',{ day:'numeric', month:'long'}).format(new Date(iso));
+    // -------------------------
+    // 3) Стан
+    // -------------------------
+    const state = {
+        expandedId: null
+    };
 
+    // -------------------------
+    // 4) Рендер
+    // -------------------------
     const app = document.getElementById('app');
-    app.style.cssText = `
-  font: 14px system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Arial, sans-serif;
-  color:#111;background:#fff;
-`;
-    const css = document.createElement('style');
-    css.textContent = `
-.list { display:flex; flex-direction:column; gap:8px; padding:12px; }
-.item { border:1px solid #e5e5e5; border-radius:12px; padding:10px 12px; background:#fafafa; }
-.row { display:flex; justify-content:space-between; gap:12px; align-items:center; cursor:pointer; }
-.left { display:flex; flex-direction:column; gap:4px; }
-.date { font-weight:600; }
-.brief { color:#333; }
-.actions { display:flex; align-items:center; gap:10px; }
-.btn { border:none; background:transparent; font-size:20px; line-height:1; cursor:pointer; }
-.full { margin-top:8px; padding-top:8px; border-top:1px dashed #ddd; color:#222; }
-.voters { font-size:12px; color:#555; }
-`;
-    document.head.append(css);
+
+    function renderHeader() {
+        return el('div', { className:'header' }, ['Події (за датою ↑)']);
+    }
+
+    function renderList(items) {
+        const wrap = el('div', { className:'wrap' });
+
+        for (const it of items) {
+            const isExpanded = state.expandedId === it.id;
+
+            const row = el('div', { className:'row' }, [
+                el('div', { className:'left' }, [
+                    el('div', { className:'date' }, [formatDateUA(it.event_date)]),
+                    el('div', { className:'brief' }, [it.brief]),
+                ]),
+            ]);
+
+            row.addEventListener('click', () => {
+                state.expandedId = (state.expandedId === it.id) ? null : it.id;
+                render(); // перемалювати
+            });
+
+            const card = el('div', { className:'item' }, [row]);
+
+            if (isExpanded) {
+                card.append(el('div', { className:'full' }, [it.fulltext]));
+            }
+
+            wrap.append(card);
+        }
+
+        return wrap;
+    }
 
     function render() {
         app.innerHTML = '';
-        const list = document.createElement('div');
-        list.className = 'list';
+        app.append(renderHeader());
 
-        for (const it of data) {
-            const item = document.createElement('div');
-            item.className = 'item';
+        // Сортування за зростанням дати (ISO YYYY-MM-DD)
+        const sorted = [...events].sort((a, b) => {
+            const ta = Date.parse(a.event_date) || 0;
+            const tb = Date.parse(b.event_date) || 0;
+            return (ta - tb) || ((a.id ?? 0) - (b.id ?? 0));
+        });
 
-            const row = document.createElement('div');
-            row.className = 'row';
-
-            const left = document.createElement('div');
-            left.className = 'left';
-
-            const d = document.createElement('div');
-            d.className = 'date';
-            d.textContent = fDate(it.event_date); // "9 жовтня"
-
-            const b = document.createElement('div');
-            b.className = 'brief';
-            b.textContent = it.brief;
-
-            left.append(d, b);
-
-            const actions = document.createElement('div');
-            actions.className = 'actions';
-
-            const btn = document.createElement('button');
-            btn.className = 'btn';
-            btn.textContent = '👍'; // емодзі-кнопка голосу
-
-            const voters = votes.get(it.id) ?? [];
-            const votersEl = document.createElement('div');
-            votersEl.className = 'voters';
-            votersEl.textContent = voters.length ? `Голоси: ${voters.join(', ')}` : 'Голосів поки нема';
-
-            actions.append(btn);
-            row.append(left, actions);
-
-            // Клік по рядку — розгорнути/згорнути (один за раз)
-            row.addEventListener('click', (e) => {
-                // не реагуємо, якщо клік по кнопці
-                if (e.target === btn) return;
-                state.expandedId = (state.expandedId === it.id) ? null : it.id;
-                render();
-            });
-
-            // Клік по голосуванню
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                // приклад: додаємо локального "user123"; у реалі — Telegram.WebApp.initDataUnsafe.user.username/id
-                const me = 'user123';
-                const arr = votes.get(it.id) ?? [];
-                if (!arr.includes(me)) arr.push(me);
-                votes.set(it.id, arr);
-                render();
-            });
-
-            item.append(row, votersEl);
-
-            // Показуємо fulltext лише якщо цей item активний
-            if (state.expandedId === it.id) {
-                const full = document.createElement('div');
-                full.className = 'full';
-                full.textContent = it.fulltext;
-                item.append(full);
-            }
-
-            list.append(item);
-        }
-
-        app.append(list);
+        app.append(renderList(sorted));
     }
 
+    // -------------------------
+    // 5) Старт
+    // -------------------------
     render();
 </script>
-
 </body>
 </html>
